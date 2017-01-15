@@ -1,4 +1,5 @@
 #!/bin/sh
+#For easily chenge deirectory up
 
 Purpose_directory=AOJ_DPL
 cd
