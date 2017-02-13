@@ -2,7 +2,7 @@
 #For easily chenge deirectory up
 
 if [ $# -ne 2 ]; then
-    echo "Usege: [ The abbreviation fot a file ] [filename]"
+    echo "Usege: cdup [ - dir option ] [filename]"
     exit 1
 fi
 
@@ -13,7 +13,7 @@ file_directory=""
 OPT=
 while getopts ab:ar:ao:tdpc:  OPT
 do 
-    case "$str" in
+    case $OPT in
         ab )   Purpose_directory="atcoder/ABC/"
                file_directory="atcoder/ABC_solve/ABC_solve/"  ;;
         ar )   Purpose_directory="atcoder/ARC/"
@@ -23,15 +23,19 @@ do
         tdpc ) Purpose_directory="atcoder/TDPC/"
                file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  ;;
         
-        \? )    echo "there is no file such a file \"$1\" " ;;
+        \? )   echo "there is not such a option."
+               echo "Usege: cdup [ - dir option ] [filename]" ;;
+
     esac
-  
+done
+
+shift `expr $OPTIND - 1`  
 
 #echo $Purpose_directory
 
 cd /mnt/c/home
 
-cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
+cp ${BASE}${file_directory}$1 ${BASE}${Purpose_directory}
 
 
 #to do 
