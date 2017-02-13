@@ -39,11 +39,15 @@ done
 
 #shift `expr $OPTIND - 1`  
 
+#sed -e "1i/^/`date '+%Y/%m/%d'`/" $2
+
 cd /mnt/c/home
 
 cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
 
 cd /mnt/c/home/${BASE}${Purpose_directory}
+
+sed -e "1s/xtimex/`date '+%Y/%m/%d'`/" $2
 
 if [ -e $2 ]
 then
