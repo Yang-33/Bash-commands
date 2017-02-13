@@ -2,17 +2,23 @@
 
 #For easily chenge deirectory up
 
+# the number of variables
+
 if [ $# -ne 2 ]; then
     echo "Usege: cdup [ - dir option ] [filename]"
     exit 1
 fi
 
 
+#variables
+
 BASE="competitive-programming/"
 Purpose_directory=""
 file_directory=""
 
 OPT=
+
+# --option
 
 while  getopts  ab:ar:ao:tdpc:  OPT
 do 
@@ -39,15 +45,21 @@ done
 
 #shift `expr $OPTIND - 1`  
 
+# copy
+
 cd /mnt/c/home
 
 cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
 
 cd /mnt/c/home/${BASE}${Purpose_directory}
 
+# input date to the file
+
 PTIME=`date '+%Y/%m/%d'`
 
 sed -i -e "s|xtimex|$PTIME|g" $2
+
+# message 
 
 if [ -e $2 ]
 then
