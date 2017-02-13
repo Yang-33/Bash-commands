@@ -47,7 +47,9 @@ cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
 
 cd /mnt/c/home/${BASE}${Purpose_directory}
 
-sed -e "1s/xtimex/`date '+%Y/%m/%d'`/" $2
+PTIME=`date '+%Y/%m/%d'`
+echo $PTIME
+# sed -i-e "1s/xtimex/`date '+%Y/%m/%d'`/g" $2
 
 if [ -e $2 ]
 then
