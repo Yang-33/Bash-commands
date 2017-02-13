@@ -19,16 +19,16 @@ do
     case  ${OPT}  in  #2nd char is available
         b )   Purpose_directory="atcoder/ABC/"
                file_directory="atcoder/ABC_solve/ABC_solve/"
-               echo "abababb" ;;
+               echo "ABC" ;;
         r )   Purpose_directory="atcoder/ARC/"
-               file_directory="atcoder/ARC_solve/ARC_solve/"  
-               echo "22222222" ;;
+               file_directory="atcoder/ARC_solve/ARC_solve/"
+               echo "ARC" ;;
         o )   Purpose_directory="AOJ_DPL/"
                file_directory="AOJ_solved/AOJ_solved/"
-               echo "333333333" ;;
-        d ) Purpose_directory="atcoder/TDPC/"
-               file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  ;;
-        
+               echo "AOJ" ;;
+        d )   Purpose_directory="atcoder/TDPC/"
+               file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  
+               echo "TDPC"  ;;
         * )   echo "there is not such a option."
                echo "Usege: cdup [ - dir option ] [filename]"
                exit 2  ;;
@@ -42,7 +42,15 @@ done
 cd /mnt/c/home
 
 cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
-# echo $2 "has been copied! "
+
+cd /mnt/c/home/${BASE}${Purpose_directory}
+
+if [ -e $2 ]
+then
+    echo $2 "has been copied! "
+else echo "Failure. " $2 "has not been copied. " 
+    
+fi
 
 #to do 
 
