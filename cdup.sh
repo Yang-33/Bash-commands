@@ -1,4 +1,5 @@
-B#!/bin/sh
+#!/bin/sh
+
 #For easily chenge deirectory up
 
 if [ $# -ne 2 ]; then
@@ -36,23 +37,19 @@ do
 done
 
 
-
 #shift `expr $OPTIND - 1`  
 
-echo $Purpose_directory
-echo $file_directory
-echo $2
 cd /mnt/c/home
 
 cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
-
+# echo $2 "has been copied! "
 
 #to do 
 
 # just copy file from last update (time comparision)
 #    and show copied files (with echo)
 
-# 
+# add time year/month/day to files 
 #
 #
 #
