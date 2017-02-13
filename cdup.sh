@@ -2,6 +2,13 @@
 
 #For easily chenge deirectory up
 
+
+#to do
+
+# just copy file from last update (time comparision)
+#    and show copied files (with echo)
+
+
 # the number of variables
 
 if [ $# -ne 2 ]; then
@@ -67,14 +74,4 @@ then
 else echo "Failure. " $2 "has not been copied. " 
     
 fi
-
-#to do 
-
-# just copy file from last update (time comparision)
-#    and show copied files (with echo)
-
-#
-#
-#
-
 
