@@ -1,4 +1,4 @@
-#!/bin/sh
+B#!/bin/sh
 #For easily chenge deirectory up
 
 if [ $# -ne 2 ]; then
@@ -10,42 +10,47 @@ fi
 BASE="competitive-programming/"
 Purpose_directory=""
 file_directory=""
+
 OPT=
-while getopts ab:ar:ao:tdpc:  OPT
+
+while  getopts  ab:ar:ao:tdpc:  OPT
 do 
-    case $OPT in
-        ab )   Purpose_directory="atcoder/ABC/"
-               file_directory="atcoder/ABC_solve/ABC_solve/"  ;;
-        ar )   Purpose_directory="atcoder/ARC/"
-               file_directory="atcoder/ARC_solve/ARC_solve/"  ;;
-        ao )   Purpose_directory="AOJ_DPL/"
-               file_directory="AOJ_solved/AOJ_solved/"  ;;
-        tdpc ) Purpose_directory="atcoder/TDPC/"
+    case  ${OPT}  in  #2nd char is available
+        b )   Purpose_directory="atcoder/ABC/"
+               file_directory="atcoder/ABC_solve/ABC_solve/"
+               echo "abababb" ;;
+        r )   Purpose_directory="atcoder/ARC/"
+               file_directory="atcoder/ARC_solve/ARC_solve/"  
+               echo "22222222" ;;
+        o )   Purpose_directory="AOJ_DPL/"
+               file_directory="AOJ_solved/AOJ_solved/"
+               echo "333333333" ;;
+        d ) Purpose_directory="atcoder/TDPC/"
                file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  ;;
         
-        \? )   echo "there is not such a option."
-               echo "Usege: cdup [ - dir option ] [filename]" ;;
+        * )   echo "there is not such a option."
+               echo "Usege: cdup [ - dir option ] [filename]"
+               exit 2  ;;
 
     esac
 done
 
-shift `expr $OPTIND - 1`  
 
-#echo $Purpose_directory
 
+#shift `expr $OPTIND - 1`  
+
+echo $Purpose_directory
+echo $file_directory
+echo $2
 cd /mnt/c/home
 
-cp ${BASE}${file_directory}$1 ${BASE}${Purpose_directory}
+cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
 
 
 #to do 
 
-# remove bugs about varionus scope ploblems
-
 # just copy file from last update (time comparision)
 #    and show copied files (with echo)
-
-# option commands -> directory name
 
 # 
 #
