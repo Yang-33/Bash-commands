@@ -6,8 +6,11 @@
 #to do
 
 # just copy file from last update (time comparision)
-#    and show copied files (with echo)
+#    and show copied files (with echo? )
 
+## need 
+# time.sth <- to manege time for files update
+# p251 Isnewer.sh
 
 # the number of variables
 
