@@ -10,23 +10,24 @@ fi
 BASE="competitive-programming/"
 Purpose_directory=""
 file_directory=""
+OPT=
+while getopts ab:ar:ao:tdpc:  OPT
+do 
+    case "$str" in
+        ab )   Purpose_directory="atcoder/ABC/"
+               file_directory="atcoder/ABC_solve/ABC_solve/"  ;;
+        ar )   Purpose_directory="atcoder/ARC/"
+               file_directory="atcoder/ARC_solve/ARC_solve/"  ;;
+        ao )   Purpose_directory="AOJ_DPL/"
+               file_directory="AOJ_solved/AOJ_solved/"  ;;
+        tdpc ) Purpose_directory="atcoder/TDPC/"
+               file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  ;;
+        
+        \? )    echo "there is no file such a file \"$1\" " ;;
+    esac
+  
 
-str=$1
-
-case "$str" in
-    ab )   Purpose_directory="atcoder/ABC/"
-           file_directory="atcoder/ABC_solve/ABC_solve/"  ;;
-    ar )   Purpose_directory="atcoder/ARC/"
-           file_directory="atcoder/ARC_solve/ARC_solve/"  ;;
-    ao )   Purpose_directory="AOJ_DPL/"
-           file_directory="AOJ_solved/AOJ_solved/"  ;;
-    tdpc ) Purpose_directory="atcoder/TDPC/"
-           file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  ;; 
-    
-    * )    echo "there is no file such a file \"$1\" " ;;
-esac
-
-echo $Purpose_directory
+#echo $Purpose_directory
 
 cd /mnt/c/home
 
