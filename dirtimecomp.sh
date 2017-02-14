@@ -82,7 +82,8 @@ AAA="Bash-commands/"
 cp ${AAA}${file_directory}$2 ${BASE}${Purpose_directory}
 
 cd /mnt/c/home/${BASE}${Purpose_directory}
-
+echo `pwd`
+echo $2
 # input date to the file
 
 PTIME=`date '+%Y/%m/%d'`
@@ -111,7 +112,7 @@ echo $STIME
 EXP="*.sh"
 
 ## where? => option
-OPTION=""
+OPTION="-b"
 CUR_DIR=`pwd`
 
 for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
@@ -119,13 +120,17 @@ for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
     STATUS=$?
 
     if [ "$STATUS" -eq 0 ]; then
-        OPTION="-b"
-    copyfile $OPTION $File    
+        # OPTION="-b"
+        copyfile $OPTION $File    
         echo $File
         echo "Yeah!"
+
+        echo "now" `pwd`        
+
+        cd ${CUR_DIR}
     fi
 
-    cd ${CUR_DIR}
+   # cd ${CUR_DIR}
 
 done
 
