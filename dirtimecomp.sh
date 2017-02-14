@@ -6,7 +6,7 @@
 #   echo flename  else do nothing
 #
 
-time_comp(){
+time_comp(){ # checked file -> $1  TM -> $2
 
 
 if [ $# -ne 2 ]; then
@@ -28,7 +28,9 @@ fi
 
 }
 
-copyfile(){
+
+
+copyfile(){ # OPT -> $1  file -> $2
 
 
 if [ $# -ne 2 ]; then
@@ -102,26 +104,29 @@ fi
 
 }
 
-which_dir(){ # pwd->$1
+
+# pwd->$1
+# check dir name 
+# return dir option 
+which_dir(){  
 
 _REOPT=
-    case  $1  in  #2nd char is available
+
+    case  $1  in
         *ABC*  )  _REOPT="-b" ;;
         *ARC*  )  _REOPT="-r" ;;
         *AOJ*  )  _REOPT="-o" ;;
         *TDPC* )  _REOPT="-d" ;;
-        * )   echo "there is not such a option."
-               echo "Usege: cdup [ - dir option ] [filename]"
+        * )   echo "This directory is not for competitiveprogramming."
+               echo "Usege: (on matched dir) command [-option]"
                exit 2  ;;
 
     esac
 
-
 echo ${_REOPT}
 
-
-
 }
+
 
 
 main(){
@@ -130,9 +135,21 @@ STIME=`\find . -name *.TM `
 
 EXP="*.sh"
 
-## where? => option
-OPTION=`which_dir`
 CUR_DIR=`pwd`
+## where? => option
+if [ $# eq 0 ]
+then 
+OPTION=`which_dir $CUR_DIR `
+
+elif [ $# eq 1 ]
+then #opt check
+
+else 
+    echo "Usege: ...."
+fi
+
+
+
 
 for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
     time_comp $File $STIME 
