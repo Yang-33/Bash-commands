@@ -30,22 +30,31 @@ do
         
         b ) if [ "$FLAG" = "TRUE" ] 
             then
-            PURPOSE="atcoder/ABC"
+                PURPOSE="atcoder/ABC"
             else
-            PURPOSE="atcoder/ABC_solve/ABC_solve"
+                PURPOSE="atcoder/ABC_solve/ABC_solve"
             fi ;;
-    #    r )   Purpose_directory="atcoder/ARC/"
-     #          file_directory="atcoder/ARC_solve/ARC_solve/"
-      #         echo "DIRECTORY is ARC" ;;
-       # o )   Purpose_directory="AOJ_DPL/"
-         #      file_directory="AOJ_solved/AOJ_solved/"
-        #      echo "DIRECTORY is AOJ" ;;
-       # d )   Purpose_directory="atcoder/TDPC/"
-        #       file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  
-        #      echo "DIRECTORY is TDPC"  ;;
+        r ) if [ "$FLAG" = "TRUE" ]
+            then 
+            PURPOSE="atcoder/ARC"
+            else 
+            PURPOSE="atcoder/ARC_solve/ARC_solve"
+            fi ;;
+        o ) if [ "$FLAG" = "TRUE" ]
+            then
+            PURPOSE="AOJ_DPL"
+            else
+            PORPOSE="AOJ_solved/AOJ_solved"
+            fi ;;
+        d ) if [ "$FLAG" = "TRUE" ]
+            then
+            PORPOSE="atcoder/TDPC"
+            else
+            PURPOSE="atcoder/solve_TDPC_file/solve_TDPC_file/"  
+            fi ;;
         * )   echo "there is not such a option."
-              echo "Usege: cdup [ - dir option ] [filename]"
-              exit 2  ;;
+            echo "Usege: cdup [ - dir option ] [ - dir name]"
+            exit 2  ;;
 
     esac
 done
