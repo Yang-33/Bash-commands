@@ -34,13 +34,14 @@ STIME=`\find . -name *.TM `
 
 echo $STIME
 
-for File in `\find . -maxdepth 1 -type f`; do
-time_comp $File $STIME 
-STATUS=$?
-if [ "$STATUS" -eq 0 ]; then
-echo $File
-echo "Yeah!"
-fi
+for File in `\find . -maxdepth 1 -type f -name "*.sh" `; do
+    time_comp $File $STIME 
+    STATUS=$?
+
+    if [ "$STATUS" -eq 0 ]; then
+        echo $File
+        echo "Yeah!"
+    fi
 #then echo "Yeah!"
  #fi
 
