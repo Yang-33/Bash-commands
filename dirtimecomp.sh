@@ -51,7 +51,8 @@ while  getopts  ab:ar:ao:tdpc:  OPT
 do 
     case  ${OPT}  in  #2nd char is available
         b )   Purpose_directory="atcoder/ABC/"
-               file_directory="atcoder/ABC_solve/ABC_solve/"
+#               file_directory="atcoder/ABC_solve/ABC_solve/"
+                file_directory=""
                echo "DIRECTORY is ABC" ;;
         r )   Purpose_directory="atcoder/ARC/"
                file_directory="atcoder/ARC_solve/ARC_solve/"
@@ -76,7 +77,9 @@ done
 
 cd /mnt/c/home
 
-cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
+#cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
+AAA="Bash-commands/"
+cp ${AAA}${file_directory}$2 ${BASE}${Purpose_directory}
 
 cd /mnt/c/home/${BASE}${Purpose_directory}
 
@@ -107,18 +110,22 @@ STIME=`\find . -name *.TM `
 echo $STIME
 EXP="*.sh"
 
-## where?
-OPTION=xxx
+## where? => option
+OPTION=""
+CUR_DIR=`pwd`
 
 for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
     time_comp $File $STIME 
     STATUS=$?
 
     if [ "$STATUS" -eq 0 ]; then
-        
+        OPTION="-b"
+    copyfile $OPTION $File    
         echo $File
         echo "Yeah!"
     fi
+
+    cd ${CUR_DIR}
 
 done
 
