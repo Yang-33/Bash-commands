@@ -3,14 +3,17 @@
 # command file1 file2
 # if file1 is newer then file2 => 0(true) else 1(false)
 
+function time_comp(){
+
+
 if [ $# -ne 2 ]; then
     echo "Usage: command file1 file2" 1>&2
-    exit 1
+    exit 2
 fi
 
 
 if [ ! -f $1 -o ! -f $2 ]; then
-    return 1
+    exit 3
 fi
 
 
@@ -20,5 +23,5 @@ else
     return 1
 fi
 
-
+}
 
