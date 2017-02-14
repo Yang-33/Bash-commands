@@ -47,8 +47,9 @@ OPT=
 
 # --option
 
-while  getopts  ab:ar:ao:tdpc:  OPT
+while  getopts  brod  OPT
 do 
+    echo "cheking now"
     case  ${OPT}  in  #2nd char is available
         b )   Purpose_directory="atcoder/ABC/"
 #               file_directory="atcoder/ABC_solve/ABC_solve/"
@@ -121,7 +122,8 @@ for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
 
     if [ "$STATUS" -eq 0 ]; then
         # OPTION="-b"
-        copyfile $OPTION $File    
+        echo "opt is " $OPTION
+      (  copyfile $OPTION $File   ) 
         echo $File
         echo "Yeah!"
 
