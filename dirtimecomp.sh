@@ -49,11 +49,10 @@ OPT=
 
 while  getopts  brod  OPT
 do 
-    echo "cheking now"
     case  ${OPT}  in  #2nd char is available
         b )   Purpose_directory="atcoder/ABC/"
 #               file_directory="atcoder/ABC_solve/ABC_solve/"
-                file_directory=""
+              file_directory=""
                echo "DIRECTORY is ABC" ;;
         r )   Purpose_directory="atcoder/ARC/"
                file_directory="atcoder/ARC_solve/ARC_solve/"
@@ -82,9 +81,9 @@ cd /mnt/c/home
 AAA="Bash-commands/"
 cp ${AAA}${file_directory}$2 ${BASE}${Purpose_directory}
 
+
 cd /mnt/c/home/${BASE}${Purpose_directory}
-echo `pwd`
-echo $2
+
 # input date to the file
 
 PTIME=`date '+%Y/%m/%d'`
@@ -103,17 +102,36 @@ fi
 
 }
 
+which_dir(){ # pwd->$1
+
+_REOPT=
+    case  $1  in  #2nd char is available
+        *ABC*  )  _REOPT="-b" ;;
+        *ARC*  )  _REOPT="-r" ;;
+        *AOJ*  )  _REOPT="-o" ;;
+        *TDPC* )  _REOPT="-d" ;;
+        * )   echo "there is not such a option."
+               echo "Usege: cdup [ - dir option ] [filename]"
+               exit 2  ;;
+
+    esac
+
+
+echo ${_REOPT}
+
+
+
+}
 
 
 main(){
 
 STIME=`\find . -name *.TM `
 
-echo $STIME
 EXP="*.sh"
 
 ## where? => option
-OPTION="-b"
+OPTION=`which_dir`
 CUR_DIR=`pwd`
 
 for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
@@ -121,18 +139,11 @@ for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
     STATUS=$?
 
     if [ "$STATUS" -eq 0 ]; then
-        # OPTION="-b"
-        echo "opt is " $OPTION
       (  copyfile $OPTION $File   ) 
-        echo $File
-        echo "Yeah!"
 
-        echo "now" `pwd`        
-
-        cd ${CUR_DIR}
+#        cd ${CUR_DIR}
     fi
 
-   # cd ${CUR_DIR}
 
 done
 
