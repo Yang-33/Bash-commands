@@ -33,8 +33,9 @@ main(){
 STIME=`\find . -name *.TM `
 
 echo $STIME
+EXP="*.sh"
 
-for File in `\find . -maxdepth 1 -type f -name "*.sh" `; do
+for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
     time_comp $File $STIME 
     STATUS=$?
 
