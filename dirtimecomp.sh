@@ -148,7 +148,8 @@ copyfile()
 { # !!test mode
     
     
-    if [ $# -ne 2 ]; then
+    if [ $# -ne 2 ]
+    then
         echo "Usege: cdup [ - dir option ] [filename]"
         exit 1
     fi
@@ -157,30 +158,30 @@ copyfile()
     #variables
     
     BASE="competitive-programming/"
-    Purpose_directory=""
-    file_directory=""
+    local purpose_directory=""
+    local file_directory=""
     
-    OPT=
+    local OPT=
     
     # --option
     
     while  getopts  brod  OPT
     do 
         case  ${OPT}  in  #2nd char is available
-            b )   Purpose_directory="atcoder/ABC/"
+            b )   purpose_directory="atcoder/ABC/"
                 #               file_directory="atcoder/ABC_solve/ABC_solve/"
                 file_directory="" 
                 ;;
 #                echo "DIRECTORY is ABC" ;;
-            r )   Purpose_directory="atcoder/ARC/"
+            r )   purpose_directory="atcoder/ARC/"
                 file_directory="atcoder/ARC_solve/ARC_solve/"
                 ;;
 #               echo "DIRECTORY is ARC" ;;
-            o )   Purpose_directory="AOJ_DPL/"
+            o )   purpose_directory="AOJ_DPL/"
                 file_directory="AOJ_solved/AOJ_solved/"
                 ;;
 #                echo "DIRECTORY is AOJ" ;;
-            d )   Purpose_directory="atcoder/TDPC/"
+            d )   purpose_directory="atcoder/TDPC/"
                 file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  
                 ;;
 #                echo "DIRECTORY is TDPC"  ;;
@@ -207,7 +208,7 @@ copyfile()
     
     # input date to the file
     
-    PTIME=`date '+%Y/%m/%d'`
+    local PTIME=`date '+%Y/%m/%d'`
     
     sed -i -e "s|xtimex|$PTIME|g" $2
     
@@ -215,9 +216,9 @@ copyfile()
     
     if [ -e $2 ]
     then
-    echo $2 "has been copied! "
-    else echo "Failure. " $2 "has not been copied. " 
-        
+        echo $2 "has been copied! "
+    else 
+        echo "Failure. " $2 "has not been copied. " 
     fi
     
     
