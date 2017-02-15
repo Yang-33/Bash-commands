@@ -11,7 +11,12 @@
 # no return
 write_time(){
 
-echo $1
+    _Ptime=`date`
+    _MES="=>  $_Ptime"
+    
+    sed  "/=>/c $_MES" $1
+    
+    # cat $1
 
 }
 
@@ -71,16 +76,20 @@ copyfile(){ # !!test mode
         case  ${OPT}  in  #2nd char is available
             b )   Purpose_directory="atcoder/ABC/"
                 #               file_directory="atcoder/ABC_solve/ABC_solve/"
-                file_directory=""
+                file_directory="" 
+                ;;
 #                echo "DIRECTORY is ABC" ;;
             r )   Purpose_directory="atcoder/ARC/"
                 file_directory="atcoder/ARC_solve/ARC_solve/"
+                ;;
 #               echo "DIRECTORY is ARC" ;;
             o )   Purpose_directory="AOJ_DPL/"
                 file_directory="AOJ_solved/AOJ_solved/"
+                ;;
 #                echo "DIRECTORY is AOJ" ;;
             d )   Purpose_directory="atcoder/TDPC/"
                 file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  
+                ;;
 #                echo "DIRECTORY is TDPC"  ;;
             * )   echo "there is not such a option."
                 echo "Usege: cdup [ - dir option ] [filename]"
