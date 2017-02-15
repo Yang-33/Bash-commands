@@ -253,24 +253,25 @@ which_dir(){
 
 # opt -> $1
 # check inputed option presence
-# return dir option
-opt_check(){
+# return dir option (Re_opt)
+opt_check()
+{
     
-    _REOPT=
+    local Re_opt=
     
     case  $1  in
-        -b  )  _REOPT="-b" ;;
-        -r  )  _REOPT="-r" ;;
-        -o  )  _REOPT="-o" ;;
-        -d )  _REOPT="-d" ;;
+        -b  )  Re_opt="-b" ;;
+        -r  )  Re_opt="-r" ;;
+        -o  )  Re_opt="-o" ;;
+        -d  )  Re_opt="-d" ;;
         * )   echo "There is no presence such a option " $1
             echo "Usege: (on matched dir) command [-option]"
+            echo "Error on opt_check func."
             exit 2  ;;
         
     esac
     
-    echo ${_REOPT}
-    
+    echo ${Re_opt}
     
 }
 
