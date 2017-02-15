@@ -203,16 +203,16 @@ copyfile()
     
     #cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
     AAA="Bash-commands/"
-    cp ${AAA}${file_directory}$2 ${BASE}${Purpose_directory}
+    cp ${AAA}${file_directory}$2 ${BASE}${purpose_directory}
     
     
-    cd /mnt/c/home/${BASE}${Purpose_directory}
+    cd /mnt/c/home/${BASE}${purpose_directory}
     
     # input date to the file
     
-    local PTIME=`date '+%Y/%m/%d'`
+    local ptime=`date '+%Y/%m/%d'`
     
-    sed -i -e "s|xtimex|$PTIME|g" $2
+    sed -i -e "s|xtimex|$ptime|g" $2
     
     # message 
     
@@ -294,54 +294,56 @@ f_message()
 }
 
 
-main(){
+main()
+{
     
     ## cpp .....
     EXP="*.sh"
     
-    CUR_DIR=`pwd`
-
+    local cur_dir=`pwd`
+    local _option=
+    local status=
     # opt check and decision
     if [ $# -eq 0 ]
     then 
-        _OPTION=`which_dir $CUR_DIR `
+        _option=`which_dir $cur_dir `
         
     elif [ $# -eq 1 ]
     then #opt check
-        _OPTION=`opt_check $1 `
+        _option=`opt_check $1 `
     else
         echo "Usege: command [-option]"
         exit 1
     fi
     
-    f_message $_OPTION
-
+    f_message $_option
     
-#    TMFile=`\find . -name *.TM `
     
 ##| test
-    TMFile=`Set_TFile $_OPTION`
+    local tm_file=`Set_TFile $_option`
 
-    echo "TMFile is " $TMFile
+    echo "tm_file is " $tm_file
     
-    for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
-        time_comp $File $TMFile 
-        STATUS=$?
+    for File in `\find . -maxdepth 1 -type f -name "${EXP}" `
+    do
+        time_comp $File $tm_file 
+        status=$?
         
-        if [ "$STATUS" -eq 0 ]; then
-            (  copyfile $_OPTION $File   ) 
-        
+        if [ "$status" -eq 0 ]
+        then
+            (  copyfile $_option $File   ) 
+            
             # this line has not been tested yet !!!!!!!!!!    
-            #        cd ${CUR_DIR}
+            #        cd ${cur_dir}
         fi
         
         
     done
     
-    write_time $TMFile
+    write_time $tm_file
 
 #for debug this func stop
-#    cd_to_upload_dir $_OPTION
+#    cd_to_upload_dir $_option
 
 }
 
