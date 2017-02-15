@@ -3,20 +3,8 @@
 . ./time_comp_func.sh
 . ./write_to_TM_func.sh
 
-# sth.TM -> $1
-# write time and info
-# no return
-write_time()
-{
 
-    local ptime=`date`
-    local mes="=>  $ptime"
-    
-    sed -i "/=>/c $mes" $1
-    
-#    cat $1
 
-}
 
 main()
 {
@@ -45,12 +33,11 @@ main()
     f_message $_option
     
     
-##| test
     local tm_file=`Set_TFile $_option`
 
     echo "tm_file is " $tm_file
     
-## have to cd. (;..;)
+    ## have to cd. (;..;)
     local val="-v"
     cd_to_upload_dir $val $_option
 
