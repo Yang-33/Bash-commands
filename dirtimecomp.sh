@@ -279,17 +279,17 @@ opt_check()
 # _option -> $1
 # out dir name
 # no return
-f_message(){
+f_message()
+{
 
     case  $1  in
         -b  )  echo "Purpose Directory is ABC."   ;;
         -r  )  echo "Purpose Directory is ARC."   ;;
         -o  )  echo "Purpose Directory is AOJ."   ;;
         -d  )  echo "Purpose Directory is TDPC."  ;;
-         *  )  echo "? eroor. on f_message "     
+         *  )  echo "Erorr on f_message func. "     
             exit 2 ;;       
     esac
-
     
 }
 
