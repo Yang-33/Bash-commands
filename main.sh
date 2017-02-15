@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # @(#) This script expresses main function setting.
+. ./grobal_exp.sh
+
 
 <<FUNC
 main
@@ -10,7 +12,7 @@ main()
 {
     
     ## cpp, sh, ....
-    EXP="*.cpp"
+#    EXP="*.cpp"
     
     local cur_dir=`pwd`
     local _option=
