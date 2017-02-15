@@ -76,7 +76,7 @@ cd_to_upload_dir()
     BASE="competitive-programming"
    
     local _OPT=$1
-    local _purpose
+    local _purpose=
     
     case  ${_OPT}  in  
         
@@ -188,6 +188,7 @@ copyfile()
 #                echo "DIRECTORY is TDPC"  ;;
             * )   echo "there is not such a option."
                 echo "Usege: cdup [ - dir option ] [filename]"
+                echo "Erorr on copyfile func"
                 exit 2  ;;
             
         esac
