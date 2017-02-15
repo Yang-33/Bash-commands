@@ -188,7 +188,7 @@ copyfile()
 #                echo "DIRECTORY is TDPC"  ;;
             * )   echo "there is not such a option."
                 echo "Usege: cdup [ - dir option ] [filename]"
-                echo "Erorr on copyfile func"
+                echo "Erorr on copyfile func."
                 exit 2  ;;
             
         esac
@@ -229,23 +229,25 @@ copyfile()
 
 # pwd->$1
 # check dir name 
-# return dir option 
-which_dir(){  
+# return dir option (Re_opt)
+which_dir(){
+  
     
-    _REOPT=
+    local Re_opt=
     
     case  $1  in
-        *ABC*  )  _REOPT="-b" ;;
-        *ARC*  )  _REOPT="-r" ;;
-        *AOJ*  )  _REOPT="-o" ;;
-        *TDPC* )  _REOPT="-d" ;;
+        *ABC*  )  Re_opt="-b" ;;
+        *ARC*  )  Re_opt="-r" ;;
+        *AOJ*  )  Re_opt="-o" ;;
+        *TDPC* )  Re_opt="-d" ;;
         * )   echo "This directory is not for competitiveprogramming."
             echo "Usege: (on matched dir) command [-option]"
+            echo "Error on which dir func."
             exit 2  ;;
         
     esac
 
-    echo ${_REOPT}
+    echo ${Re_opt}
     
 }
 
