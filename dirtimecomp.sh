@@ -66,7 +66,8 @@ write_time()
 cd_to_upload_dir()
 {
 
-    if [ $# -ne 1 ]; then
+    if [ $# -ne 1 ]
+    then
         echo "Usege: cdgf [ - dir option ] [ - dir name ] on cd_to_upload_dir func"
         exit 1
     fi
@@ -113,21 +114,24 @@ cd_to_upload_dir()
 # checked file -> $1  TM -> $2
 # compare file time
 # return 0 (time: 1 > 2) , 1 (false)
-time_comp(){
-    
-    
-    if [ $# -ne 2 ]; then
+time_comp()
+{
+        
+    if [ $# -ne 2 ]
+    then
         echo "Usage: command file1 file2" 1>&2
-    exit 2
+        exit 2
     fi
     
     
-    if [ ! -f $1 -o ! -f $2 ]; then
+    if [ ! -f $1 -o ! -f $2 ]
+    then
         exit 3
     fi
     
     
-    if [ -n "`find $1 -newer $2 -print`" ]; then
+    if [ -n "`find $1 -newer $2 -print`" ]
+    then
         return 0
     else
         return 1
@@ -140,12 +144,13 @@ time_comp(){
 # OPT -> $1  file -> $2
 # copy to purpose dirctory
 # no return
-copyfile(){ # !!test mode
+copyfile()
+{ # !!test mode
     
     
     if [ $# -ne 2 ]; then
-    echo "Usege: cdup [ - dir option ] [filename]"
-    exit 1
+        echo "Usege: cdup [ - dir option ] [filename]"
+        exit 1
     fi
     
     
