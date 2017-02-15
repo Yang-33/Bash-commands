@@ -2,13 +2,6 @@
 #  . ./filetimecomp.sh
 
 
-# if one file is newer than timefile then 
-#   echo flename  else do nothing
-#
-
-
-##this is test case about Bash-commands were abc and comp-prog file. 
-
 
 # _option -> $1
 # find TM file matched with option
@@ -20,8 +13,9 @@ Set_TFile()
     local dir_name=
     local cur_dir=`pwd`
 
-    BASE="Bash-commands"
-# BASE="competitive-programming"
+#    BASE="Bash-commands"
+BASE="competitive-programming"
+
     cd /mnt/c/home/${BASE}
     
     
@@ -36,10 +30,13 @@ Set_TFile()
     
     
     Re_tm_name=`\find . -name "${dir_name}.TM" `
+    local fullpass=`pwd`/"$Re_tm_name"
     
+#    echo "fullpass is " $filepass
 
     cd $cur_dir
-    echo $Re_tm_name
+
+    echo $fullpass
 }
 
 
@@ -60,13 +57,13 @@ write_time()
 
 
 
-#  _option -> $1
+#  upload or visual => $1  _option -> $2
 # move to upload directory
 # no return
 cd_to_upload_dir()
 {
 
-    if [ $# -ne 1 ]
+    if [ $# -ne 2 ]
     then
         echo "Usege: cdgf [ - dir option ] [ - dir name ] on cd_to_upload_dir func"
         exit 1
@@ -74,24 +71,51 @@ cd_to_upload_dir()
     
     
     BASE="competitive-programming"
-   
-    local _OPT=$1
+    local flag=
+    local _OPT=$2
     local _purpose=
     
-    case  ${_OPT}  in  
+
+    if [ "$1" = "-u" ]
+    then
+        flag="TRUE"
+    elif [ "$1" = "-v" ]
+    then
+        flag="FALSE"
+    else
+        echo "no option like " $1
+        echo "Error on cd_to_upload_dir func."
+    fi    
+
+    echo "flag is " $flag
+echo "_OPT is " $_OPT
+    case  ${_OPT}  in     
         
-        #u )   FLAG="TRUE" ;;
-        #v )   FLAG="FALSE" ;;
-        
-        -b )  _purpose="atcoder/ABC"
-            ;;
-        -r )  _purpose="atcoder/ARC"
-            ;;
-        -o )  _purpose="AOJ_DPL"
-            ;;
-        -d )  _purpose="atcoder/TDPC"
-            ;;
-        * )  echo "there is not such a option. on cd_to_dir func error."
+        -b )  if [ "$flag" = "TRUE" ] 
+            then
+            _purpose="atcoder/ABC"
+            else
+            _purpose="atcoder/ABC_solve/ABC_solve"
+            fi ;;
+        -r )  if [ "$flag" = "TRUE" ]
+            then 
+            _purpose="atcoder/ARC"
+            else 
+            _purpose="atcoder/ARC_solve/ARC_solve"
+            fi ;;
+        -o )  if [ "$flag" = "TRUE" ]
+            then
+            _purpose="AOJ_DPL"
+            else
+            _purpose="AOJ_solved/AOJ_solved"
+            fi ;;
+        -d )  if [ "$flag" = "TRUE" ]
+            then
+            _purpose="atcoder/TDPC"
+            else
+            _puepose="atcoder/solve_TDPC_file/solve_TDPC_file/"  
+            fi ;;
+        -* )  echo "there is not such a option. on cd_to_dir func error."
             echo "Usege: cdup [ - dir option ] [ - dir name]"
             exit 2  ;;
         
@@ -104,8 +128,12 @@ cd_to_upload_dir()
     
     cd /mnt/c/home/${BASE}
     cd ${_purpose}
-    
-    exec /bin/bash
+
+
+    if [ "$flag" = "TRUE" ]
+    then    
+        exec /bin/bash
+    fi
     
 }
 
@@ -170,8 +198,7 @@ copyfile()
     do 
         case  ${OPT}  in  #2nd char is available
             b )   purpose_directory="atcoder/ABC/"
-                #               file_directory="atcoder/ABC_solve/ABC_solve/"
-                file_directory="" 
+                file_directory="atcoder/ABC_solve/ABC_solve/"
                 ;;
 #                echo "DIRECTORY is ABC" ;;
             r )   purpose_directory="atcoder/ARC/"
@@ -201,9 +228,9 @@ copyfile()
     
     cd /mnt/c/home
     
-    #cp ${BASE}${file_directory}$2 ${BASE}${Purpose_directory}
-    AAA="Bash-commands/"
-    cp ${AAA}${file_directory}$2 ${BASE}${purpose_directory}
+    cp ${BASE}${file_directory}$2 ${BASE}${purpose_directory}
+#    AAA="Bash-commands/"
+#    cp ${AAA}${file_directory}$2 ${BASE}${purpose_directory}
     
     
     cd /mnt/c/home/${BASE}${purpose_directory}
@@ -297,12 +324,13 @@ f_message()
 main()
 {
     
-    ## cpp .....
-    EXP="*.sh"
+    ## cpp, sh, ....
+    EXP="*.cpp"
     
     local cur_dir=`pwd`
     local _option=
     local status=
+
     # opt check and decision
     if [ $# -eq 0 ]
     then 
@@ -324,6 +352,10 @@ main()
 
     echo "tm_file is " $tm_file
     
+## have to cd. (;..;)
+    local val="-v"
+    cd_to_upload_dir $val $_option
+
     for File in `\find . -maxdepth 1 -type f -name "${EXP}" `
     do
         time_comp $File $tm_file 
@@ -343,7 +375,7 @@ main()
     write_time $tm_file
 
 #for debug this func stop
-#    cd_to_upload_dir $_option
+#    cd_to_upload_dir -u $_option
 
 }
 
