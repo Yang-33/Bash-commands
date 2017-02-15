@@ -72,16 +72,16 @@ copyfile(){ # !!test mode
             b )   Purpose_directory="atcoder/ABC/"
                 #               file_directory="atcoder/ABC_solve/ABC_solve/"
                 file_directory=""
-                echo "DIRECTORY is ABC" ;;
+#                echo "DIRECTORY is ABC" ;;
             r )   Purpose_directory="atcoder/ARC/"
                 file_directory="atcoder/ARC_solve/ARC_solve/"
-                echo "DIRECTORY is ARC" ;;
+#               echo "DIRECTORY is ARC" ;;
             o )   Purpose_directory="AOJ_DPL/"
                 file_directory="AOJ_solved/AOJ_solved/"
-                echo "DIRECTORY is AOJ" ;;
+#                echo "DIRECTORY is AOJ" ;;
             d )   Purpose_directory="atcoder/TDPC/"
                 file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  
-                echo "DIRECTORY is TDPC"  ;;
+#                echo "DIRECTORY is TDPC"  ;;
             * )   echo "there is not such a option."
                 echo "Usege: cdup [ - dir option ] [filename]"
                 exit 2  ;;
