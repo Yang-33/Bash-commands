@@ -16,7 +16,7 @@
 Set_TFile()
 {
 
-    Re_tm_name=
+local    Re_tm_name=
      dir_name=
      cur_dir=`pwd`
 
@@ -336,7 +336,8 @@ main(){
     
     write_time $TMFile
 
-    cd_to_upload_dir $_OPTION
+#for debug this func stop
+#    cd_to_upload_dir $_OPTION
 
 }
 
