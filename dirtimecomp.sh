@@ -5,6 +5,9 @@
 # if one file is newer than timefile then 
 #   echo flename  else do nothing
 #
+##this is test case about Bash-commands were abc and comp-prog file. 
+
+
 
 # _option -> $1
 # find TM file matched with option
@@ -12,10 +15,13 @@
 Set_TFile(){
 
     _RE_TMFName=
-    
+    DIR_name=
     __CUR_DIR=`pwd`
 
-    cd /mnt/c/home/competitive-programinng
+BASE="Bash-commands"
+# BASE="competitive-programming"
+    cd /mnt/c/home/${BASE}
+
 
     case  $1  in
         -b  )  DIR_name="ABC" ;;
@@ -247,7 +253,7 @@ main(){
     f_message $_OPTION
 
     
-    TMFile=`\find . -name *.TM `
+#    TMFile=`\find . -name *.TM `
     
 ##| test
     TMFile=`Set_TFile $_OPTION`
