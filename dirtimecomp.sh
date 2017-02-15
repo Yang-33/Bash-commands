@@ -5,8 +5,9 @@
 # if one file is newer than timefile then 
 #   echo flename  else do nothing
 #
-##this is test case about Bash-commands were abc and comp-prog file. 
 
+
+##this is test case about Bash-commands were abc and comp-prog file. 
 
 
 # _option -> $1
@@ -18,11 +19,11 @@ Set_TFile(){
     DIR_name=
     __CUR_DIR=`pwd`
 
-BASE="Bash-commands"
+    BASE="Bash-commands"
 # BASE="competitive-programming"
     cd /mnt/c/home/${BASE}
-
-
+    
+    
     case  $1  in
         -b  )  DIR_name="ABC" ;;
         -r  )  DIR_name="ARC" ;;
@@ -53,6 +54,59 @@ write_time(){
     
 #    cat $1
 
+}
+
+
+
+#  _option -> $1
+# move to upload directory
+# no return
+cd_to_upload_dir(){
+
+    if [ $# -ne 1 ]; then
+        echo "Usege: cdgf [ - dir option ] [ - dir name ] on cd_to_upload_dir func"
+        exit 1
+    fi
+    
+    
+    _BASE="competitive-programming"
+   
+    _OPT=$1
+
+#only this case FLAG="TRUE" is OK.
+#    FLAG="TRUE"
+    
+    
+    case  ${_OPT}  in  #2nd char is available
+        
+        #u )   FLAG="TRUE" ;;
+        #v )   FLAG="FALSE" ;;
+        
+        -b )  echo "yeah" 
+            PURPOSE="atcoder/ABC"
+            ;;
+        -r )  PURPOSE="atcoder/ARC"
+            ;;
+        -o )  PURPOSE="AOJ_DPL"
+            ;;
+        -d )  PURPOSE="atcoder/TDPC"
+            ;;
+        * )  echo "there is not such a option. on cd_to_dir func error."
+            echo "Usege: cdup [ - dir option ] [ - dir name]"
+            exit 2  ;;
+        
+    esac
+    
+    
+    #shift `expr $OPTIND - 1`  
+    
+    
+    
+    cd /mnt/c/home/${_BASE}
+    cd ${PURPOSE}
+    
+    exec /bin/bash
+    
 }
 
 
@@ -245,9 +299,9 @@ main(){
     elif [ $# -eq 1 ]
     then #opt check
         _OPTION=`opt_check $1 `
-    else 
-        echo "There is no match such a option " $1
+    else
         echo "Usege: command [-option]"
+        exit 1
     fi
     
     f_message $_OPTION
@@ -265,7 +319,8 @@ main(){
         
         if [ "$STATUS" -eq 0 ]; then
             (  copyfile $_OPTION $File   ) 
-            
+        
+            # this line has not been tested yet !!!!!!!!!!    
             #        cd ${CUR_DIR}
         fi
         
@@ -274,7 +329,13 @@ main(){
     
     write_time $TMFile
 
-    
+    _OPT1="-u"
+
+echo "1st " $_OPT1
+echo "2nd " $_OPTION
+#    cd_to_upload_dir $_OPT1 $_OPTION
+    cd_to_upload_dir $_OPTION
+
 }
 
 
