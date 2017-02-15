@@ -1,6 +1,6 @@
 #!/bin/bash
 . ./dir_func.sh
-
+. ./time_comp_func.sh
 
 # sth.TM -> $1
 # write time and info
@@ -16,38 +16,6 @@ write_time()
 #    cat $1
 
 }
-
-
-
-# checked file -> $1  TM -> $2
-# compare file time
-# return 0 (time: 1 > 2) , 1 (false)
-time_comp()
-{
-        
-    if [ $# -ne 2 ]
-    then
-        echo "Usage: command file1 file2" 1>&2
-        echo "error on time_comp func"
-        exit 2
-    fi
-    
-    
-    if [ ! -f $1 -o ! -f $2 ]
-    then
-        exit 3
-    fi
-    
-    
-    if [ -n "`find $1 -newer $2 -print`" ]
-    then
-        return 0
-    else
-        return 1
-    fi
-    
-}
-
 
 main()
 {
