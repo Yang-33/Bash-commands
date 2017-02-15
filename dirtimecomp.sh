@@ -75,12 +75,9 @@ cd_to_upload_dir()
     BASE="competitive-programming"
    
     local _OPT=$1
-    local _purpose=
-#only this case FLAG="TRUE" is OK.
-#    FLAG="TRUE"
+    local _purpose
     
-    
-    case  ${_OPT}  in  #2nd char is available
+    case  ${_OPT}  in  
         
         #u )   FLAG="TRUE" ;;
         #v )   FLAG="FALSE" ;;
