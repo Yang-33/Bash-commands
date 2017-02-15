@@ -2,6 +2,9 @@
 
 # @(#) This script expresses directory setting.
 
+
+## dir <= grobal
+
 <<FUNC
 
 Set_TFile
