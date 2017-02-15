@@ -6,6 +6,35 @@
 #   echo flename  else do nothing
 #
 
+# _option -> $1
+# find TM file matched with option
+# return TMFile name
+Set_TFile(){
+
+    _RE_TMFName=
+    
+    __CUR_DIR=`pwd`
+
+    cd /mnt/c/home/competitive-programinng
+
+    case  $1  in
+        -b  )  DIR_name="ABC" ;;
+        -r  )  DIR_name="ARC" ;;
+        -o  )  DIR_name="AOJ" ;;
+        -d  )  DIR_name="TDPC" ;;
+        * ) echo "Error on Set_TFile. "
+            exit 1 ;;
+    esac
+    
+    
+    _RE_TMFName=`\find . -name "${DIR_name}.TM" `
+    
+
+    cd $__CUR_DIR
+    echo $_RE_TMFName
+}
+
+
 # sth.TM -> $1
 # write time and info
 # no return
@@ -187,7 +216,8 @@ f_message(){
         -r  )  echo "Purpose Directory is ARC."   ;;
         -o  )  echo "Purpose Directory is AOJ."   ;;
         -d  )  echo "Purpose Directory is TDPC."  ;;
-         *  )  echo "? eroor. on f_message "      ;;       
+         *  )  echo "? eroor. on f_message "     
+            exit 2 ;;       
     esac
 
     
@@ -217,11 +247,14 @@ main(){
     f_message $_OPTION
 
     
-    STIME=`\find . -name *.TM `
+    TMFile=`\find . -name *.TM `
     
+##| test
+    TMFile=`Set_TFile $_OPTION`
+
     
     for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
-        time_comp $File $STIME 
+        time_comp $File $TMFile 
         STATUS=$?
         
         if [ "$STATUS" -eq 0 ]; then
@@ -233,7 +266,7 @@ main(){
         
     done
     
-    write_time $STIME
+    write_time $TMFile
 
     
 }
