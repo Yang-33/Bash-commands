@@ -82,8 +82,7 @@ cd_to_upload_dir(){
         #u )   FLAG="TRUE" ;;
         #v )   FLAG="FALSE" ;;
         
-        -b )  echo "yeah" 
-            PURPOSE="atcoder/ABC"
+        -b )  PURPOSE="atcoder/ABC"
             ;;
         -r )  PURPOSE="atcoder/ARC"
             ;;
@@ -329,11 +328,6 @@ main(){
     
     write_time $TMFile
 
-    _OPT1="-u"
-
-echo "1st " $_OPT1
-echo "2nd " $_OPTION
-#    cd_to_upload_dir $_OPT1 $_OPTION
     cd_to_upload_dir $_OPTION
 
 }
