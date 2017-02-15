@@ -12,13 +12,13 @@
 
 # _option -> $1
 # find TM file matched with option
-# return TMFile name
+# return TMFile name (Re_tm_name)
 Set_TFile()
 {
 
-local    Re_tm_name=
-     dir_name=
-     cur_dir=`pwd`
+    local Re_tm_name=
+    local dir_name=
+    local cur_dir=`pwd`
 
     BASE="Bash-commands"
 # BASE="competitive-programming"
