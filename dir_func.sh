@@ -2,6 +2,7 @@
 
 # @(#) This script expresses directory setting.
 
+. ./grobal_dir_name.sh
 
 ## dir <= grobal
 
@@ -93,27 +94,27 @@ cd_to_upload_dir()
         
         -b )  if [ "$flag" = "TRUE" ] 
             then
-            _purpose="atcoder/ABC"
+            _purpose=${Pass_abc_u}
             else
-            _purpose="atcoder/ABC_solve/ABC_solve"
+            _purpose=${Pass_abc_v}
             fi ;;
         -r )  if [ "$flag" = "TRUE" ]
             then 
-            _purpose="atcoder/ARC"
+            _purpose=${Pass_arc_u}
             else 
-            _purpose="atcoder/ARC_solve/ARC_solve"
+            _purpose=${Pass_arc_v}
             fi ;;
         -o )  if [ "$flag" = "TRUE" ]
             then
-            _purpose="AOJ_DPL"
+            _purpose=${Pass_aoj_u}
             else
-            _purpose="AOJ_solved/AOJ_solved"
+            _purpose=${Pass_aoj_v}
             fi ;;
         -d )  if [ "$flag" = "TRUE" ]
             then
-            _purpose="atcoder/TDPC"
+            _purpose=${Pass_tdpc_u}
             else
-            _puepose="atcoder/solve_TDPC_file/solve_TDPC_file/"  
+            _puepose=${Pass_tdpc_v}
             fi ;;
         -* )  echo "there is not such a option. on cd_to_dir func error."
             echo "Usege: cdup [ - dir option ] [ - dir name]"
@@ -167,20 +168,20 @@ copyfile()
     while  getopts  brod  OPT
     do 
         case  ${OPT}  in  #2nd char is available
-            b )   purpose_directory="atcoder/ABC/"
-                file_directory="atcoder/ABC_solve/ABC_solve/"
+            b )   purpose_directory=${Pass_abc_u}
+                file_directory=${Pass_abc_v}
                 ;;
 #                echo "DIRECTORY is ABC" ;;
-            r )   purpose_directory="atcoder/ARC/"
-                file_directory="atcoder/ARC_solve/ARC_solve/"
+            r )   purpose_directory=${Pass_arc_u}
+                file_directory=${Pass_arc_v}
                 ;;
 #               echo "DIRECTORY is ARC" ;;
-            o )   purpose_directory="AOJ_DPL/"
-                file_directory="AOJ_solved/AOJ_solved/"
+            o )   purpose_directory=${Pass_aoj_u}
+                file_directory=${Pass_aoj_v}
                 ;;
 #                echo "DIRECTORY is AOJ" ;;
-            d )   purpose_directory="atcoder/TDPC/"
-                file_directory="atcoder/solve_TDPC_file/solve_TDPC_file/"  
+            d )   purpose_directory=${Pass_tdpc_u}
+                file_directory=${Pass_tdpc_v}
                 ;;
 #                echo "DIRECTORY is TDPC"  ;;
             * )   echo "there is not such a option."
