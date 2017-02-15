@@ -16,9 +16,9 @@
 Set_TFile()
 {
 
-    local re_tm_name=
-    local dir_name=
-    local cur_dir=`pwd`
+    Re_tm_name=
+     dir_name=
+     cur_dir=`pwd`
 
     BASE="Bash-commands"
 # BASE="competitive-programming"
@@ -35,11 +35,11 @@ Set_TFile()
     esac
     
     
-    re_tm_name=`\find . -name "${DIR_name}.TM" `
+    Re_tm_name=`\find . -name "${dir_name}.TM" `
     
 
     cd $cur_dir
-    echo $re_tm_name
+    echo $Re_tm_name
 }
 
 
@@ -120,6 +120,7 @@ time_comp()
     if [ $# -ne 2 ]
     then
         echo "Usage: command file1 file2" 1>&2
+        echo "error on time_comp func"
         exit 2
     fi
     
@@ -317,6 +318,7 @@ main(){
 ##| test
     TMFile=`Set_TFile $_OPTION`
 
+    echo "TMFile is " $TMFile
     
     for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
         time_comp $File $TMFile 
