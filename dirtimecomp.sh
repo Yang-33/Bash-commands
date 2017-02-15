@@ -6,6 +6,17 @@
 #   echo flename  else do nothing
 #
 
+# sth.TM -> $1
+# write time and info
+# no return
+write_time(){
+
+echo $1
+
+}
+
+
+
 # checked file -> $1  TM -> $2
 # compare file time
 # return 0 (time: 1 > 2) , 1 (false)
@@ -157,10 +168,26 @@ opt_check(){
 }
 
 
+# _option -> $1
+# out dir name
+# no return
+f_message(){
+
+    case  $1  in
+        -b  )  echo "Purpose Directory is ABC."   ;;
+        -r  )  echo "Purpose Directory is ARC."   ;;
+        -o  )  echo "Purpose Directory is AOJ."   ;;
+        -d  )  echo "Purpose Directory is TDPC."  ;;
+         *  )  echo "? eroor. on f_message "      ;;       
+    esac
+
+    
+}
+
+
 main(){
     
-    STIME=`\find . -name *.TM `
-    
+    ## cpp .....
     EXP="*.sh"
     
     CUR_DIR=`pwd`
@@ -178,7 +205,10 @@ main(){
         echo "Usege: command [-option]"
     fi
     
+    f_message $_OPTION
+
     
+    STIME=`\find . -name *.TM `
     
     
     for File in `\find . -maxdepth 1 -type f -name "${EXP}" `; do
@@ -194,6 +224,8 @@ main(){
         
     done
     
+    write_time $STIME
+
     
 }
 
