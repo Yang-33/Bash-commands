@@ -2,6 +2,8 @@
 
 # @(#) This script expresses directory name setting.
 
+Home="/mnt/c/home"
+Base="competitive-programming"
 
 Pass_abc_u="atcoder/ABC"
 Pass_abc_v="atcoder/ABC_solve/ABC_solve"

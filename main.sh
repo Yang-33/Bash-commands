@@ -2,7 +2,9 @@
 
 # @(#) This script expresses main function setting.
 . ./grobal_exp.sh
-
+<<INCLUDE
+Exp
+INCLUDE
 
 <<FUNC
 main
@@ -10,9 +12,6 @@ FUNC
 
 main()
 {
-    
-    ## cpp, sh, ....
-#    EXP="*.cpp"
     
     local cur_dir=`pwd`
     local _option=
@@ -44,7 +43,7 @@ main()
     local val="-v"
     cd_to_upload_dir $val $_option
 
-    for File in `\find . -maxdepth 1 -type f -name "${EXP}" `
+    for File in `\find . -maxdepth 1 -type f -name "${Exp}" `
     do
         time_comp $File $tm_file 
         status=$?

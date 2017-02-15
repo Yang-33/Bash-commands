@@ -21,19 +21,20 @@ FUNC
 <<spec
  _option -> $1
  find TM file matched with option
- return TMFile name (Re_tm_name)
+ return TMFile name (re_tm_name)
 spec
 Set_TFile()
 {
 
-    local Re_tm_name=
+    local re_tm_name=
     local dir_name=
     local cur_dir=`pwd`
 
 #    BASE="Bash-commands"
-    BASE="competitive-programming"
+#    BASE="competitive-programming"
 
-    cd /mnt/c/home/${BASE}
+    cd ${Home}
+    cd ${Base}
     
     
     case  $1  in
@@ -46,8 +47,8 @@ Set_TFile()
     esac
     
     
-    Re_tm_name=`\find . -name "${dir_name}.TM" `
-    local fullpass=`pwd`/"$Re_tm_name"
+    re_tm_name=`\find . -name "${dir_name}.TM" `
+    local fullpass=`pwd`/"$re_tm_name"
     
 #    echo "fullpass is " $filepass
 
@@ -72,7 +73,7 @@ cd_to_upload_dir()
     fi
     
     
-    BASE="competitive-programming"
+ #   Base="competitive-programming"
     local flag=
     local _OPT=$2
     local _purpose=
@@ -126,8 +127,8 @@ cd_to_upload_dir()
     #shift `expr $OPTIND - 1`  
     
     
-    
-    cd /mnt/c/home/${BASE}
+    cd ${Home}
+    cd ${Base}
     cd ${_purpose}
 
 
@@ -157,7 +158,7 @@ copyfile()
     
     #variables
     
-    BASE="competitive-programming/"
+#    Base="competitive-programming/"
     local purpose_directory=""
     local file_directory=""
     
@@ -197,14 +198,15 @@ copyfile()
     
     # copy
     
-    cd /mnt/c/home
+    cd ${Home}
     
-    cp ${BASE}${file_directory}$2 ${BASE}${purpose_directory}
+    cp ${Base}${file_directory}$2 ${Base}${purpose_directory}
 #    AAA="Bash-commands/"
 #    cp ${AAA}${file_directory}$2 ${BASE}${purpose_directory}
     
     
-    cd /mnt/c/home/${BASE}${purpose_directory}
+    cd ${Home}
+    cd ${Base}${purpose_directory}
     
     # input date to the file
     
@@ -234,13 +236,13 @@ spec
 which_dir(){
   
     
-    local Re_opt=
+    local re_opt=
     
     case  $1  in
-        *ABC*  )  Re_opt="-b" ;;
-        *ARC*  )  Re_opt="-r" ;;
-        *AOJ*  )  Re_opt="-o" ;;
-        *TDPC* )  Re_opt="-d" ;;
+        *ABC*  )  re_opt="-b" ;;
+        *ARC*  )  re_opt="-r" ;;
+        *AOJ*  )  re_opt="-o" ;;
+        *TDPC* )  re_opt="-d" ;;
         * )   echo "This directory is not for competitiveprogramming."
             echo "Usege: (on matched dir) command [-option]"
             echo "Error on which dir func."
@@ -248,7 +250,7 @@ which_dir(){
         
     esac
 
-    echo ${Re_opt}
+    echo ${re_opt}
     
 }
 
@@ -261,13 +263,13 @@ spec
 opt_check()
 {
     
-    local Re_opt=
+    local re_opt=
     
     case  $1  in
-        -b  )  Re_opt="-b" ;;
-        -r  )  Re_opt="-r" ;;
-        -o  )  Re_opt="-o" ;;
-        -d  )  Re_opt="-d" ;;
+        -b  )  re_opt="-b" ;;
+        -r  )  re_opt="-r" ;;
+        -o  )  re_opt="-o" ;;
+        -d  )  re_opt="-d" ;;
         * )   echo "There is no presence such a option " $1
             echo "Usege: (on matched dir) command [-option]"
             echo "Error on opt_check func."
@@ -275,7 +277,7 @@ opt_check()
         
     esac
     
-    echo ${Re_opt}
+    echo ${re_opt}
     
 }
 

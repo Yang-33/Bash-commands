@@ -1,8 +1,8 @@
 #!/bin/bash
 
-
+# @(#) This script expresses file expression setting.
 
 ## cpp, sh, ....
-EXP="*.cpp"
+Exp="*.cpp"
 
 
