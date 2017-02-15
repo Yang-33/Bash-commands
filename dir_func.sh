@@ -38,10 +38,10 @@ Set_TFile()
     
     
     case  $1  in
-        -b  )  dir_name="ABC" ;;
-        -r  )  dir_name="ARC" ;;
-        -o  )  dir_name="AOJ" ;;
-        -d  )  dir_name="TDPC" ;;
+        "-$Optname_abc"   )  dir_name="ABC" ;;
+        "-$Optname_arc"   )  dir_name="ARC" ;;
+        "-$Optname_aoj"   )  dir_name="AOJ" ;;
+        "-$Optname_tdpc"  )  dir_name="TDPC" ;;
         * ) echo "Error on Set_TFile. "
             exit 1 ;;
     esac
@@ -93,25 +93,25 @@ cd_to_upload_dir()
 
     case  ${_OPT}  in     
         
-        -b )  if [ "$flag" = "TRUE" ] 
+        "-$Optname_abc"  )  if [ "$flag" = "TRUE" ] 
             then
             _purpose=${Pass_abc_u}
             else
             _purpose=${Pass_abc_v}
             fi ;;
-        -r )  if [ "$flag" = "TRUE" ]
+        "-$Optname_arc"  )  if [ "$flag" = "TRUE" ]
             then 
             _purpose=${Pass_arc_u}
             else 
             _purpose=${Pass_arc_v}
             fi ;;
-        -o )  if [ "$flag" = "TRUE" ]
+        "-$Optname_aoj"  )  if [ "$flag" = "TRUE" ]
             then
             _purpose=${Pass_aoj_u}
             else
             _purpose=${Pass_aoj_v}
             fi ;;
-        -d )  if [ "$flag" = "TRUE" ]
+        "-$Optname_tdpc" )  if [ "$flag" = "TRUE" ]
             then
             _purpose=${Pass_tdpc_u}
             else
@@ -169,19 +169,19 @@ copyfile()
     while  getopts  brod  OPT
     do 
         case  ${OPT}  in  #2nd char is available
-            b )   purpose_directory=${Pass_abc_u}
+            "$Optname_abc" )   purpose_directory=${Pass_abc_u}
                 file_directory=${Pass_abc_v}
                 ;;
 #                echo "DIRECTORY is ABC" ;;
-            r )   purpose_directory=${Pass_arc_u}
+            "$Optname_arc" )   purpose_directory=${Pass_arc_u}
                 file_directory=${Pass_arc_v}
                 ;;
 #               echo "DIRECTORY is ARC" ;;
-            o )   purpose_directory=${Pass_aoj_u}
+            "$Optname_aoj" )   purpose_directory=${Pass_aoj_u}
                 file_directory=${Pass_aoj_v}
                 ;;
 #                echo "DIRECTORY is AOJ" ;;
-            d )   purpose_directory=${Pass_tdpc_u}
+            "$Optname_tdpc" )   purpose_directory=${Pass_tdpc_u}
                 file_directory=${Pass_tdpc_v}
                 ;;
 #                echo "DIRECTORY is TDPC"  ;;
@@ -264,12 +264,12 @@ opt_check()
 {
     
     local re_opt=
-    
+
     case  $1  in
-        -b  )  re_opt="-b" ;;
-        -r  )  re_opt="-r" ;;
-        -o  )  re_opt="-o" ;;
-        -d  )  re_opt="-d" ;;
+        "-$Optname_abc"  )  re_opt="-$Optname_abc"  ;;
+        "-$Optname_arc"  )  re_opt="-$Optname_arc"  ;;
+        "-$Optname_aoj"  )  re_opt="-$Optname_aoj"  ;;
+        "-$Optname_tdpc" )  re_opt="-$Optname_tdpc" ;;
         * )   echo "There is no presence such a option " $1
             echo "Usege: (on matched dir) command [-option]"
             echo "Error on opt_check func."
@@ -292,10 +292,10 @@ f_message()
 {
 
     case  $1  in
-        -b  )  echo "Purpose Directory is ABC."   ;;
-        -r  )  echo "Purpose Directory is ARC."   ;;
-        -o  )  echo "Purpose Directory is AOJ."   ;;
-        -d  )  echo "Purpose Directory is TDPC."  ;;
+        "-$Optname_abc"  )  echo "Purpose Directory is ABC."   ;;
+        "-$Optname_arc"  )  echo "Purpose Directory is ARC."   ;;
+        "-$Optname_aoj"  )  echo "Purpose Directory is AOJ."   ;;
+        "-$Optname_tdpc" )  echo "Purpose Directory is TDPC."  ;;
          *  )  echo "Erorr on f_message func. "     
             exit 2 ;;       
     esac
