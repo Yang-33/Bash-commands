@@ -87,8 +87,8 @@ cd_to_upload_dir()
         echo "Error on cd_to_upload_dir func."
     fi    
 
-    echo "flag is " $flag
-echo "_OPT is " $_OPT
+#    echo "flag is " $flag
+#    echo "_OPT is " $_OPT
     case  ${_OPT}  in     
         
         -b )  if [ "$flag" = "TRUE" ] 
@@ -330,6 +330,7 @@ main()
     local cur_dir=`pwd`
     local _option=
     local status=
+    local count=0    
 
     # opt check and decision
     if [ $# -eq 0 ]
@@ -364,14 +365,22 @@ main()
         if [ "$status" -eq 0 ]
         then
             (  copyfile $_option $File   ) 
-            
-            # this line has not been tested yet !!!!!!!!!!    
-            #        cd ${cur_dir}
+            count=$((count++))
         fi
         
         
     done
-    
+
+    if [ $count -eq 0 ]
+    then 
+        echo "No file is newer from the last upload."
+    elif [ $count -eq 1 ]
+    then
+        echo $count "file has uploaded."
+    else
+        echo $count "files have uploaded."   
+    fi
+
     write_time $tm_file
 
 #for debug this func stop
