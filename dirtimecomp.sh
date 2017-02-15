@@ -14,9 +14,9 @@ write_time(){
     _Ptime=`date`
     _MES="=>  $_Ptime"
     
-    sed  "/=>/c $_MES" $1
+    sed -i "/=>/c $_MES" $1
     
-    # cat $1
+#    cat $1
 
 }
 
