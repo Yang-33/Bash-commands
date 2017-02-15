@@ -2,9 +2,11 @@
 
 # @(#) This script expresses directory name setting.
 
+
 Home="/mnt/c/home/"
 Base="competitive-programming/"
 
+# pass & option
 
 
 Pass_abc_u="atcoder/ABC"
