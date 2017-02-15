@@ -201,8 +201,6 @@ copyfile()
     cd ${Home}
     
     cp ${Base}${file_directory}$2 ${Base}${purpose_directory}
-#    AAA="Bash-commands/"
-#    cp ${AAA}${file_directory}$2 ${BASE}${purpose_directory}
     
     
     cd ${Home}
@@ -239,10 +237,10 @@ which_dir(){
     local re_opt=
     
     case  $1  in
-        *ABC*  )  re_opt="-b" ;;
-        *ARC*  )  re_opt="-r" ;;
-        *AOJ*  )  re_opt="-o" ;;
-        *TDPC* )  re_opt="-d" ;;
+        *ABC*  )  re_opt="-$Optname_abc"  ;;
+        *ARC*  )  re_opt="-$Optname_arc"  ;;
+        *AOJ*  )  re_opt="-$Optname_aoj"  ;;
+        *TDPC* )  re_opt="-$Optname_tdpc" ;;
         * )   echo "This directory is not for competitiveprogramming."
             echo "Usege: (on matched dir) command [-option]"
             echo "Error on which dir func."
