@@ -13,11 +13,12 @@
 # _option -> $1
 # find TM file matched with option
 # return TMFile name
-Set_TFile(){
+Set_TFile()
+{
 
-    _RE_TMFName=
-    DIR_name=
-    __CUR_DIR=`pwd`
+    local re_tm_name=
+    local dir_name=
+    local cur_dir=`pwd`
 
     BASE="Bash-commands"
 # BASE="competitive-programming"
@@ -25,32 +26,33 @@ Set_TFile(){
     
     
     case  $1  in
-        -b  )  DIR_name="ABC" ;;
-        -r  )  DIR_name="ARC" ;;
-        -o  )  DIR_name="AOJ" ;;
-        -d  )  DIR_name="TDPC" ;;
+        -b  )  dir_name="ABC" ;;
+        -r  )  dir_name="ARC" ;;
+        -o  )  dir_name="AOJ" ;;
+        -d  )  dir_name="TDPC" ;;
         * ) echo "Error on Set_TFile. "
             exit 1 ;;
     esac
     
     
-    _RE_TMFName=`\find . -name "${DIR_name}.TM" `
+    re_tm_name=`\find . -name "${DIR_name}.TM" `
     
 
-    cd $__CUR_DIR
-    echo $_RE_TMFName
+    cd $cur_dir
+    echo $re_tm_name
 }
 
 
 # sth.TM -> $1
 # write time and info
 # no return
-write_time(){
+write_time()
+{
 
-    _Ptime=`date`
-    _MES="=>  $_Ptime"
+    local ptime=`date`
+    local mes="=>  $ptime"
     
-    sed -i "/=>/c $_MES" $1
+    sed -i "/=>/c $mes" $1
     
 #    cat $1
 
@@ -61,7 +63,8 @@ write_time(){
 #  _option -> $1
 # move to upload directory
 # no return
-cd_to_upload_dir(){
+cd_to_upload_dir()
+{
 
     if [ $# -ne 1 ]; then
         echo "Usege: cdgf [ - dir option ] [ - dir name ] on cd_to_upload_dir func"
@@ -69,10 +72,10 @@ cd_to_upload_dir(){
     fi
     
     
-    _BASE="competitive-programming"
+    BASE="competitive-programming"
    
-    _OPT=$1
-
+    local _OPT=$1
+    local _purpose=
 #only this case FLAG="TRUE" is OK.
 #    FLAG="TRUE"
     
@@ -82,13 +85,13 @@ cd_to_upload_dir(){
         #u )   FLAG="TRUE" ;;
         #v )   FLAG="FALSE" ;;
         
-        -b )  PURPOSE="atcoder/ABC"
+        -b )  _purpose="atcoder/ABC"
             ;;
-        -r )  PURPOSE="atcoder/ARC"
+        -r )  _purpose="atcoder/ARC"
             ;;
-        -o )  PURPOSE="AOJ_DPL"
+        -o )  _purpose="AOJ_DPL"
             ;;
-        -d )  PURPOSE="atcoder/TDPC"
+        -d )  _purpose="atcoder/TDPC"
             ;;
         * )  echo "there is not such a option. on cd_to_dir func error."
             echo "Usege: cdup [ - dir option ] [ - dir name]"
@@ -101,8 +104,8 @@ cd_to_upload_dir(){
     
     
     
-    cd /mnt/c/home/${_BASE}
-    cd ${PURPOSE}
+    cd /mnt/c/home/${BASE}
+    cd ${_purpose}
     
     exec /bin/bash
     
