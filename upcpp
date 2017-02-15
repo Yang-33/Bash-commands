@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# @(#) upcpp is copy new file to upload directory and write time to it (c++ file)
+
+# if you want to change file expression, then you can set grobal_exp.sh
+
 . ./dir_func.sh
 . ./time_comp_func.sh
 . ./write_to_TM_func.sh

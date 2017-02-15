@@ -24,7 +24,8 @@ cd_to_upload_dir()
     
     if [ $# -ne 2 ]
     then
-        echo "Usege: cdgf [ - dir option ] [ - dir name ] on cd_to_upload_dir func"
+        echo "Usege: cd_to_upload_dir [ - dir option ] [ - dir name ]"
+        echo "Erorr on cd_to_upload_dir func."
         exit 1
     fi
     
@@ -74,7 +75,7 @@ cd_to_upload_dir()
             _puepose=${Pass_tdpc_v}
             fi ;;
         -* )  echo "there is not such a option. on cd_to_dir func error."
-            echo "Usege: cdup [ - dir option ] [ - dir name]"
+            echo "Usege: cd_to_upload_dir [ - dir option ] [ - dir name]"
             exit 2  ;;
         
     esac
@@ -108,7 +109,7 @@ copyfile()
     
     if [ $# -ne 2 ]
     then
-        echo "Usege: cdup [ - dir option ] [filename]"
+        echo "Usege: copyfile [ - dir option ] [filename]"
         exit 1
     fi
     
@@ -142,7 +143,7 @@ copyfile()
                 ;;
 #                echo "DIRECTORY is TDPC"  ;;
             * )   echo "there is not such a option."
-                echo "Usege: cdup [ - dir option ] [filename]"
+                echo "Usege: copyfile [ - dir option ] [filename]"
                 echo "Erorr on copyfile func."
                 exit 2  ;;
             

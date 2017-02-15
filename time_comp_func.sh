@@ -18,7 +18,7 @@ time_comp()
         
     if [ $# -ne 2 ]
     then
-        echo "Usage: command file1 file2" 1>&2
+        echo "Usage: time_comp file1 file2" 1>&2
         echo "error on time_comp func"
         exit 2
     fi

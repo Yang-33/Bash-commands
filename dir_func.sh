@@ -74,7 +74,7 @@ which_dir(){
         *AOJ*  )  re_opt="-$Optname_aoj"  ;;
         *TDPC* )  re_opt="-$Optname_tdpc" ;;
         * )   echo "This directory is not for competitiveprogramming."
-            echo "Usege: (on matched dir) command [-option]"
+            echo "Usege: (on matched dir) which_dir [-option]"
             echo "Error on which dir func."
             exit 2  ;;
         
@@ -101,7 +101,7 @@ opt_check()
         "-$Optname_aoj"  )  re_opt="-$Optname_aoj"  ;;
         "-$Optname_tdpc" )  re_opt="-$Optname_tdpc" ;;
         * )   echo "There is no presence such a option " $1
-            echo "Usege: (on matched dir) command [-option]"
+            echo "Usege: (on matched dir) opt_check [-option]"
             echo "Error on opt_check func."
             exit 2  ;;
         

@@ -3,6 +3,7 @@
 # @(#) This script expresses directory name setting.
 
 
+
 Home="/mnt/c/home/"
 Base="competitive-programming/"
 
