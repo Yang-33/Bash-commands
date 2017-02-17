@@ -74,7 +74,7 @@ main()
     fi
 
 
-    write_time $tm_file
+    write_time $tm_file $count
 
 
     cd_to_upload_dir -u $_option
