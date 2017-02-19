@@ -14,7 +14,7 @@ big_char_conversion()
     local sname=$(basename "$1")
     local sbase=$(echo "$sname" | sed -e 's/\.[^.]*$//')
     local dbase=$(echo "$sbase" | tr a-z A-Z )
-    local ext="cpp"
+    local ext=$Exp_name
 
     local refile="$dbase"."$ext"
 

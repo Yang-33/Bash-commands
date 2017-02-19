@@ -6,6 +6,7 @@
 
 ## cpp, sh, ....
 Exp="*.cpp"
+Exp_name="cpp"
 Command_name="upcpp"
 
 
