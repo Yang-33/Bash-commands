@@ -3,7 +3,7 @@
 # @(#) This script expresses directory function and pass setting.
 
 . ./grobal_dir_name.sh
-
+. ./routine.sh
 
 <<FUNC
 
@@ -156,21 +156,27 @@ copyfile()
     # copy
     
     cd ${Home}
-    
-    cp ${Base}${file_directory}$2 ${Base}${purpose_directory}
-    
+
+    local new_name=`big_char_conversion $2`
+
+    cp ${Base}${file_directory}$2 ${Base}${purpose_directory}${new_name}
+    echo "copied."
     
     cd ${Home}
     cd ${Base}${purpose_directory}
     
     # input date to the file
-    
+
+    local new_file=`char_code_conversion $new_name`
+    echo "$new_name is converted."
     local ptime=`date '+%Y/%m/%d'`
-    
-    sed -i -e "s|xtimex|$ptime|g" $2
+
+    sed -i -e "s|xtimex|$ptime|g" ${new_file}
     
     # message 
     
+    slackify $new_file upload 
+
     if [ -e $2 ]
     then
         echo $2 "has been copied! "
