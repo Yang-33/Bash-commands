@@ -1,2 +1,2 @@
 # Bash-commands
-To learning shellscript
+To learn shellscript
