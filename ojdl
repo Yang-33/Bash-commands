@@ -2,4 +2,8 @@
 
 URL=$1
 
+if [ ! -e test ];then
+    mkdir test
+fi
+
 rm -r test && oj dl ${URL}
