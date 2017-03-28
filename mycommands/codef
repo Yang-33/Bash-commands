@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# USAGE !
+# $codef 450 => 450_{a,b,c,d,e}_div2_codeforces.cpp
+
+
+num=$1
+for alpha in {a,b,c,d,e}
+do
+    cp mytemplate/codeforcestemplate.cpp ${num}_${alpha}_div2_codeforces.cpp
+    File=${num}_${alpha}_div2_codeforces.cpp
+    sed -i -e "s|_NUM|$num|g" ${File}
+    bigalpha=$(echo "$alpha" | tr a-z A-Z )
+    sed -i -e "s|PPP|$bigalpha|g" ${File}
+    ptime=`date '+%Y/%m/%d'`
+    sed -i -e "s|xtimex|$ptime|g" ${File}
+done

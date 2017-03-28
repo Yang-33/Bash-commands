@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# USAGE !
+# $joiyo 2017 => 2017_yo_{1,2,3,4,5,6}_JOI.cpp
+
+
+year=$1
+for alpha in {1,2,3,4,5,6}
+do
+    cp mytemplate/yo_JOI.cpp ${year}_yo_${alpha}_JOI.cpp
+    File=${year}_yo_${alpha}_JOI.cpp
+    sed -i -e "s|_NUM|$year|g" ${File}
+    sed -i -e "s|ppp|$alpha|g" ${File}
+    ptime=`date '+%Y/%m/%d'`
+    sed -i -e "s|xtimex|$ptime|g" ${File}
+done

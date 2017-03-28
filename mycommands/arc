@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# USAGE !
+# $arc 100 => arc_100_{a,b,c,d}.cpp
+
 num=$1
 for alpha in {a,b,c,d}
 do
-    cp arctemplate.cpp ${num}_arc_${alpha}.cpp
+    cp mytemplate/arctemplate.cpp ${num}_arc_${alpha}.cpp
     File=${num}_arc_${alpha}.cpp
     sed -i -e "s|_NUM|$num|g" ${File}
     sed -i -e "s|ppp|$alpha|g" ${File}

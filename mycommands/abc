@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# USAGE !
+# $abc 100 => abc_100_{a,b,c,d}.cpp
+
+
 num=$1
 for alpha in {a,b,c,d}
 do
-    cp abctemplate.cpp ${num}_abc_${alpha}.cpp
+    cp mytemplate/abctemplate.cpp ${num}_abc_${alpha}.cpp
     File=${num}_abc_${alpha}.cpp
     sed -i -e "s|_NUM|$num|g" ${File}
     sed -i -e "s|ppp|$alpha|g" ${File}
