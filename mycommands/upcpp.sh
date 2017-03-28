@@ -62,7 +62,7 @@ Set_TFile()
 
     cd ${Home}
     cd ${Base}
-    
+    cd ${Tm_dir}
     
     case  $1  in
         "-$Optname_atcoder"   )          dir_name="ATCODER" ;;
@@ -372,7 +372,7 @@ time_comp()
 tmfile_update()
 {
 
-    cd ${Home}${Base}
+    cd ${Home}${Base}${Tm_dir}
 
     for File in `\find . -maxdepth 1 -type f -name "${Tm}"`
     do 
@@ -393,6 +393,7 @@ main()
     Ext="cpp"
     Tm="*.TM"
     Command_name="upcpp"
+    Tm_dir=".TM.d"
 
 
    # for windows 
@@ -450,7 +451,7 @@ main()
     
     Pass_yukicoder_u="Yukicoder/"
     Optname_yukicoder="y"
-
+##########################################
     
     local cur_dir=`pwd`
     local _option=
