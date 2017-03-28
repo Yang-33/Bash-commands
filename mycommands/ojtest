@@ -1,0 +1,3 @@
+#!/bin/bash
+ExeFile=$1
+oj test -c ./${ExeFile}

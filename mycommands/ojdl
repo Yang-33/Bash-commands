@@ -1,0 +1,10 @@
+#!/bin/bash
+
+URL=$1
+
+if [ ! -e test ];then
+    mkdir test
+fi
+#make -p test
+
+rm -r test && oj dl ${URL}
