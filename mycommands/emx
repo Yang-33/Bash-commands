@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This command is used for emacs for x11 on another windows
+# If you want to use emacs -nw, you can type 'emacs -nw sth'
+File=$1
+
+/usr/local/emacs/bin/emacs  ${File} &
