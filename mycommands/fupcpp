@@ -74,6 +74,7 @@ Set_TFile()
         "-$Optname_agc"   )              dir_name="AGC" ;;
         "-$Optname_hackerrank"  )        dir_name="HACKERRANK" ;;
         "-$Optname_joioi"   )            dir_name="JOI_IOI" ;;
+        "-$Optname_others"   )           dir_name="OTHERS" ;;
         "-$Optname_aoj"   )              dir_name="AOJ" ;;
         "-$Optname_poj"   )              dir_name="POJ" ;;
         "-$Optname_arc"  )               dir_name="ARC" ;;
@@ -136,6 +137,7 @@ opt_check()
         "-$Optname_agc"  )  re_opt="-$Optname_agc"  ;;
         "-$Optname_hackerrank"  )  re_opt="-$Optname_hackerrank"  ;;
         "-$Optname_joioi"  )  re_opt="-$Optname_joioi"  ;;
+        "-$Optname_others"  )  re_opt="-$Optname_others"  ;;
         "-$Optname_aoj"  )  re_opt="-$Optname_aoj"  ;;
         "-$Optname_poj"  )  re_opt="-$Optname_poj"  ;;
         "-$Optname_arc"  )  re_opt="-$Optname_arc"  ;;
@@ -210,7 +212,8 @@ cd_to_upload_dir()
         "-$Optname_agc" )   _purpose=${Pass_agc_u}               ;;
         "-$Optname_hackerrank" )   _purpose=${Pass_hackerrank_u}               ;;
         "-$Optname_joioi" )   _purpose=${Pass_joioi_u}             ;;
-        "-$Optname_aoj" )   _purpose=${Pass_aoj_u}               ;;
+        "-$Optname_others" )   _purpose=${Pass_others_u}               ;;
+	"-$Optname_aoj" )   _purpose=${Pass_aoj_u}               ;;
         "-$Optname_poj" )   _purpose=${Pass_poj_u}               ;;
         "-$Optname_arc" )   _purpose=${Pass_arc_u}               ;;
         "-$Optname_srm" )   _purpose=${Pass_srm_u}             ;;
@@ -262,7 +265,7 @@ copyfile()
     # --option
 
 
-    while  getopts  abcdefghjoprstuy  OPT ## you have to write all potion here
+    while  getopts  abcdefghjnoprstuy  OPT ## you have to write all potion here
     do 
         case  ${OPT}  in  #2nd char is available
             "$Optname_atcoder"      )   purpose_directory=${Pass_atcoder_u}  
@@ -282,6 +285,8 @@ copyfile()
             "$Optname_hackerrank"   )   purpose_directory=${Pass_hackerrank_u}        
             ;;
             "$Optname_joioi"        )   purpose_directory=${Pass_joioi_u}             
+            ;;
+	    "$Optname_others"       )   purpose_directory=${Pass_others_u}               
             ;;
             "$Optname_aoj"          )   purpose_directory=${Pass_aoj_u}               
             ;;
@@ -387,7 +392,7 @@ tmfile_update()
 
 main()
 {
-# export SLACKIFY_TOKEN="" or write .bashrc / .bash_profile
+ export SLACKIFY_TOKEN="STH"
 
     Exp="*.cpp"
     Ext="cpp"
@@ -430,6 +435,9 @@ main()
 
     Pass_joioi_u="JOI_IOI/"
     Optname_joioi="j"
+
+    Pass_others_u="Others/"
+    Optname_others="n"
     
     Pass_aoj_u="AOJ/"
     Optname_aoj="o"
