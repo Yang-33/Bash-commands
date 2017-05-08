@@ -1,0 +1,30 @@
+#!/bin/bash
+
+
+
+big_char_conversion()
+{
+    Ext=cpp
+    local sname=$(basename "$1")
+    local sbase=$(echo "$sname" | sed -e 's/\.[^.]*$//')
+    local dbase=$(echo "$sbase" | tr a-z A-Z )
+    local ext=${Ext}
+
+    local refile="$dbase"."$ext"
+
+    echo $refile
+}
+
+
+
+main(){
+    local _File=$1
+    local _newfile=`big_char_conversion $_File`
+    cp $1 $_newfile
+    local ptime=`date '+%Y/%m/%d'`
+    sed -i -e "s|xtimex|$ptime|g" $_newfile
+
+}
+
+main $@
+
