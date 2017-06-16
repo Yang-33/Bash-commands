@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # USAGE !
-# $codef 450 => 450_{a,b,c,d,e}_div2_codeforces.cpp
+# $codef 450 700 => 450_{a,b,c,d,e}_div2_codeforces.cpp(contest number is 700)
 
 
 num=$1
+contestnum=$2
+
 for alpha in {a,b,c,d,e}
 do
     cp mytemplate/codeforcestemplate.cpp ${num}_${alpha}_div2_codeforces.cpp
@@ -14,4 +16,5 @@ do
     sed -i -e "s|PPP|$bigalpha|g" ${File}
     ptime=`date '+%Y/%m/%d'`
     sed -i -e "s|xtimex|$ptime|g" ${File}
+    sed -i -e "s|CONTESTNUM|$contestnum|g" ${File}
 done
