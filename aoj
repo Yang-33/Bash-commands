@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# USAGE !
+# $aoj 100 => aoj100.cpp
+
+num=$1
+    cp mytemplate/aojtemplate.cpp aoj${num}.cpp
+    File=aoj${num}.cpp
+    sed -i -e "s|_NUM|$num|g" ${File}
+    ptime=`date '+%Y/%m/%d'`
+    sed -i -e "s|xtimex|$ptime|g" ${File}
+
